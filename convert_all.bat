@@ -9,6 +9,15 @@ SET BR="drawtext=text='MPEG':x=W-th-220:y=H-th-10:fontsize=90:fontcolor=#ffcccc:
 SET BL="drawtext=text='MPEG':x=10:y=H-th-10:fontsize=90:fontcolor=#ffcccc:shadowcolor=black:shadowx=5:shadowy=5"
 
 
+
+for %%f in (*.mkv;*.mov;*.mp4;*.mpg;*.avi) do ( 
+	SET InFile=%%f
+	SET OutFile=..\video_mpg\%%~nf.mov
+	ECHO "!InFile! -> !OutFile!"
+	ffmpeg -n -i "!InFile!" -s 1280x720 -vf "!TL!, !TR!, !BR!, !BL!, fps=25" -c:v mpeg2video -q:v 20 -c:a libmp3lame "!OutFile!"
+)
+
+
 SET ParentD=%~dp0
 
 REM echo "!ParentD!"
