@@ -31,7 +31,7 @@ echo starting loop
 
 for %%f in (!INPUT_DIR!\*.mkv;!INPUT_DIR!\*mov;!INPUT_DIR!\*.mp4;!INPUT_DIR!\*.mpg;!INPUT_DIR!\*.avi) do ( 
     SET InFile=%%f
-    SET OutFile=!OUTPUT_DIR!\%%~nf.mov
+    SET OutFile=!OUTPUT_DIR!\%%~nf.mp4
     ECHO "!InFile! -> !OutFile!"
   
      ffmpeg -i "!InFile!" ^
