@@ -45,7 +45,7 @@ FOR /D /r %%I IN (*) DO (
 		SET InFile=%%f
 		SET OutFile=!MpgD!\%%~nf.mov
 		ECHO "!InFile! -> !OutFile!"
-		ffmpeg -n -i "!InFile!" -s 1280x720 -vf "!TL!, !TR!, !BR!, !BL!, fps=25" -c:v mpeg2video -q:v 20 -c:a libmp3lame "!OutFile!"
+		ffmpeg -n -i "!InFile!" -vf scale=w=320:h=240:force_original_aspect_ratio=decrease -vf "!TL!, !TR!, !BR!, !BL!, fps=25" -c:v mpeg2video -q:v 20 -c:a libmp3lame "!OutFile!"
 	)
 
  )
